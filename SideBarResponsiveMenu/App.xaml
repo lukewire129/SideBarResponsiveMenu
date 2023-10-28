@@ -1,0 +1,6 @@
+﻿<james:JamesApplication
+    x:Class="SideBarResponsiveMenu.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:james="https://jamesnet.dev/xaml/presentation"
+    xmlns:local="clr-namespace:SideBarResponsiveMenu" />
