@@ -11,15 +11,21 @@
     Background="#615f5f"
     TitleBarColor="#615f5f"
     mc:Ignorable="d">
-    <james:JamesGrid Columns="*,*" Rows="*">
-        <units:SidebarMenu x:Name="SidebarMenu" ItemSource="{Binding SampleDatas}" />
-        <Button
-            x:Name="btn"
-            Width="100"
-            Height="50"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Click="Button_Click"
-            Content="SideBar Open" />
+    <james:JamesGrid Columns="auto,*" Rows="*">
+        <units:SidebarMenu
+            Background="#312f30"
+            Foreground="White"
+            ItemSource="{Binding SampleDatas}"
+            SelecteItemColor="#6dbddd"
+            SelectedItem="{Binding TabItemSelectedCommand}" />
+        <Grid>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="50"
+                FontWeight="Bold"
+                Foreground="White"
+                Text="{Binding ContentName}" />
+        </Grid>
     </james:JamesGrid>
 </james:DarkThemeWindow>

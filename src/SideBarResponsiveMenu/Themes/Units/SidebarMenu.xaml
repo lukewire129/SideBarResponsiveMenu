@@ -4,7 +4,6 @@
     xmlns:james="https://jamesnet.dev/xaml/presentation"
     xmlns:units="clr-namespace:SideBarResponsiveMenu.UI.Units">
     <Style x:Key="listBoxItemStyle" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="BorderBrush" Value="White" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -19,20 +18,20 @@
                             Orientation="Horizontal">
                             <james:JamesIcon
                                 Width="70"
-                                Fill="{TemplateBinding BorderBrush}"
+                                Fill="{TemplateBinding Foreground}"
                                 Icon="{Binding IconType}" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 FontSize="20"
                                 FontWeight="Bold"
-                                Foreground="{TemplateBinding BorderBrush}"
+                                Foreground="{TemplateBinding Foreground}"
                                 Text="{Binding Name}" />
                         </james:JamesStack>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="#615f5f" />
-                            <Setter Property="BorderBrush" Value="#6dbddd" />
+                            <Setter Property="Foreground" Value="{Binding SelecteItemColor, RelativeSource={RelativeSource AncestorType={x:Type units:SidebarMenu}}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -41,7 +40,6 @@
     </Style>
     <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
         <Setter Property="ItemContainerStyle" Value="{StaticResource listBoxItemStyle}" />
-        <Setter Property="SelectedIndex" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBox}">
@@ -59,18 +57,19 @@
                     <Border
                         x:Name="myAnimatedBorder"
                         Width="70"
-                        MaxWidth="250"
-                        Margin="5,20,0,20"
+                        Margin="5,0,0,0"
                         Padding="0,30"
-                        Background="#312f30"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
                         CornerRadius="10">
-                        <ListBox ItemsSource="{TemplateBinding ItemSource}" Style="{StaticResource ListBoxStyle}" />
+                        <ListBox
+                            x:Name="PART_ItemsBox"
+                            Foreground="{TemplateBinding Foreground}"
+                            ItemsSource="{TemplateBinding ItemSource}"
+                            Style="{StaticResource ListBoxStyle}" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding IsOpen, RelativeSource={RelativeSource Mode=Self}}" Value="True">
-                            <DataTrigger.EnterActions>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
@@ -78,11 +77,15 @@
                                             Storyboard.TargetProperty="Width"
                                             From="70"
                                             To="250"
-                                            Duration="0:0:1" />
+                                            Duration="0:0:0.150">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseIn" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </DataTrigger.EnterActions>
-                            <DataTrigger.ExitActions>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation
@@ -90,11 +93,15 @@
                                             Storyboard.TargetProperty="Width"
                                             From="250"
                                             To="70"
-                                            Duration="0:0:1" />
+                                            Duration="0:0:0.150">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseInOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
-                            </DataTrigger.ExitActions>
-                        </DataTrigger>
+                            </Trigger.ExitActions>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
