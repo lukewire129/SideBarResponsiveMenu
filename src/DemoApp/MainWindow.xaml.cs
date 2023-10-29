@@ -1,6 +1,6 @@
 ﻿using Jamesnet.Wpf.Controls;
 
-namespace SideBarResponsiveMenu
+namespace DemoApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

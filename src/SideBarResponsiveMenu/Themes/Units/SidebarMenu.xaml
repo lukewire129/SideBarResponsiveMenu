@@ -2,8 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:james="https://jamesnet.dev/xaml/presentation"
-    xmlns:local="clr-namespace:SideBarResponsiveMenu">
-    <Style x:Key="listBoxStyle" TargetType="{x:Type ListBoxItem}">
+    xmlns:units="clr-namespace:SideBarResponsiveMenu.UI.Units">
+    <Style x:Key="listBoxItemStyle" TargetType="{x:Type ListBoxItem}">
         <Setter Property="BorderBrush" Value="White" />
         <Setter Property="Template">
             <Setter.Value>
@@ -39,23 +39,23 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type local:TabList}">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource listBoxStyle}" />
+    <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource listBoxItemStyle}" />
         <Setter Property="SelectedIndex" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:TabList}">
+                <ControlTemplate TargetType="{x:Type ListBox}">
                     <ItemsPresenter />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:SidebarMenu}">
+    <Style TargetType="{x:Type units:SidebarMenu}">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:SidebarMenu}">
+                <ControlTemplate TargetType="{x:Type units:SidebarMenu}">
                     <Border
                         x:Name="myAnimatedBorder"
                         Width="70"
@@ -66,7 +66,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="10">
-                        <local:TabList ItemsSource="{Binding SampleDatas}" />
+                        <ListBox ItemsSource="{TemplateBinding ItemSource}" Style="{StaticResource ListBoxStyle}" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding IsOpen, RelativeSource={RelativeSource Mode=Self}}" Value="True">

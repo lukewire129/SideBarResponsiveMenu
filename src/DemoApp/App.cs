@@ -1,9 +1,9 @@
-﻿using Jamesnet.Wpf.Controls;
+﻿using DemoApp.ViewModels;
+using Jamesnet.Wpf.Controls;
 using Jamesnet.Wpf.Global.Location;
-using SideBarResponsiveMenu.ViewModels;
 using System.Windows;
 
-namespace SideBarResponsiveMenu
+namespace DemoApp
 {
     /// <summary>
     /// Interaction logic for App.xaml

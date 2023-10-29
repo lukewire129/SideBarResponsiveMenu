@@ -1,10 +1,22 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
 using System.Windows.Controls;
 
-namespace SideBarResponsiveMenu
+namespace SideBarResponsiveMenu.UI.Units
 {
     public class SidebarMenu : ContentControl
     {
+        public IEnumerable ItemSource
+        {
+            get { return (IEnumerable)GetValue (ItemSourceProperty); }
+            set { SetValue (ItemSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemSourceProperty =
+            DependencyProperty.Register ("ItemSource", typeof (IEnumerable), typeof (SidebarMenu), null);
+
+
         public bool IsOpen
         {
             get { return (bool)GetValue (IsOpenProperty); }

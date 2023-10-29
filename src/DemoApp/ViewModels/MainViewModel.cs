@@ -3,7 +3,7 @@ using Jamesnet.Wpf.Controls;
 using Jamesnet.Wpf.Mvvm;
 using System.Collections.Generic;
 
-namespace SideBarResponsiveMenu.ViewModels
+namespace DemoApp.ViewModels
 {
     public class DataModel
     {
