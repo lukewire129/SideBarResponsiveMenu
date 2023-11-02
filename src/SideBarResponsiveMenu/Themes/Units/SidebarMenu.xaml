@@ -72,32 +72,26 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="myAnimatedBorder"
-                                            Storyboard.TargetProperty="Width"
+                                        <james:ValueItem
+                                            Mode="CubicEaseIn"
+                                            TargetName="myAnimatedBorder"
+                                            Property="Width"
                                             From="70"
                                             To="250"
-                                            Duration="0:0:0.150">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseIn" />
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
+                                            Duration="0:0:0.150" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation
-                                            Storyboard.TargetName="myAnimatedBorder"
-                                            Storyboard.TargetProperty="Width"
+                                        <james:ValueItem
+                                            Mode="CubicEaseInOut"
+                                            TargetName="myAnimatedBorder"
+                                            Property="Width"
                                             From="250"
                                             To="70"
-                                            Duration="0:0:0.150">
-                                            <DoubleAnimation.EasingFunction>
-                                                <CubicEase EasingMode="EaseInOut" />
-                                            </DoubleAnimation.EasingFunction>
-                                        </DoubleAnimation>
+                                            Duration="0:0:0.150" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>

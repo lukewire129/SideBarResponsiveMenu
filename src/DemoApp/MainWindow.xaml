@@ -9,7 +9,7 @@
     Width="600"
     Height="800"
     Background="#615f5f"
-    TitleBarColor="#615f5f"
+    TitleHeaderBackground="#615f5f"
     mc:Ignorable="d">
     <james:JamesGrid Columns="auto,*" Rows="*">
         <units:SidebarMenu
